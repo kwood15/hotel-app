@@ -9,9 +9,8 @@ class HotelList extends Component {
   super(props)
     this.state = {
       hotels: [],
-      starRatingValue: 0,
-      filterKey: 'BY_ACTIVE',
-      filterValue: ''
+      filterValue: '',
+      starRatingValue: 0
     }
   }
 
@@ -34,22 +33,40 @@ class HotelList extends Component {
 
   handleClick = event => {
     this.setState({
-      filterKey: 'BY_FACILITY',
-      filterValue: event.target.value
+      hotels: this.state.hotels.filter(x => x)
     });
-    // console.log(this.state.filterValue);
+    console.log(this.state.hotels);
   }
 
   handleChange = event => {
+    if (event.target.value === 'High Rating') {
+      this.sortByRatingDesc();
+    } else {
+      this.sortByRatingAsc();
+    }
     this.setState({
       starRatingValue: event.target.value
     });
-    // console.log(event.target);
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    alert(`star rating: ${this.state.starRatingValue}`);
+  }
+
+  sortByRatingAsc = () => {
+    this.setState({
+      hotels: this.state.hotels
+        .slice(0)
+        .sort((a, b) => (a.starRating - b.starRating))
+    });
+  }
+
+  sortByRatingDesc = () => {
+    this.setState({
+      hotels: this.state.hotels
+        .slice(0)
+        .sort((a, b) => (b.starRating - a.starRating))
+    });
   }
 
   renderData(hotels) {
@@ -73,12 +90,18 @@ class HotelList extends Component {
         <div className="sort-by">
           <form onSubmit={this.handleSubmit}>
             <label>Sort by:</label>
+            <button onClick={this.sortByRatingDesc}>High Rating</button>
+            <button onClick={this.sortByRatingAsc}>Low Rating</button>
+          </form>
+        </div>
+
+        <div className="sort-by">
+          <form onSubmit={this.handleSubmit}>
+            <label>Sort by:</label>
             <select value={starRatingValue} onChange={this.handleChange}>
-              {hotels.map(hotel => (
-                <option key={hotel.name} value={hotel.starRating}>{hotel.starRating}</option>
-              ))}
+              <option value="High Rating">High Rating</option>
+              <option value="Low Rating">Low Rating</option>
             </select>
-            <input type="submit" value="Submit" />
           </form>
         </div>
 
@@ -97,14 +120,6 @@ class HotelList extends Component {
 
   render() {
     const { hotels } = this.state;
-
-    // const HOTEL_FILTERS = {
-    //   'BY_ACTIVE': hotels.map(hotel => hotel.name),
-    //   'BY_FACILITY': hotels.map(hotel => hotel.facilities)
-    // };
-
-    // const filteredHotels = HOTEL_FILTERS[filterKey];
-    // console.log(filteredHotels)
 
     return (
       hotels && hotels.length ? this.renderData(hotels) : this.renderLoading()
