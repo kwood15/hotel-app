@@ -32,19 +32,19 @@ class HotelList extends Component {
     })
   }
 
-  handleClick = (e) => {
+  handleClick = event => {
     this.setState({
       filterKey: 'BY_FACILITY',
-      filterValue: e.target.value
+      filterValue: event.target.value
     });
-    console.log(this.state.filterValue);
+    // console.log(this.state.filterValue);
   }
 
   handleChange = event => {
     this.setState({
       starRatingValue: event.target.value
     });
-    console.log(event.target);
+    // console.log(event.target);
   }
 
   handleSubmit = event => {
@@ -58,7 +58,7 @@ class HotelList extends Component {
       <HotelsWrapper className="search-results hotels">
         <h1>Search results for ...</h1>
 
-        <FiltersWrapper className="hotels__filters">
+        <FiltersWrapper className="filters">
           <FiltersList>
             {hotels.map(hotel => (
               <FiltersListItem key={hotel.name}>
@@ -70,7 +70,7 @@ class HotelList extends Component {
           </FiltersList>
         </FiltersWrapper>
 
-        <div className="hotels__sort-by">
+        <div className="sort-by">
           <form onSubmit={this.handleSubmit}>
             <label>Sort by:</label>
             <select value={starRatingValue} onChange={this.handleChange}>
@@ -82,7 +82,7 @@ class HotelList extends Component {
           </form>
         </div>
 
-        <HotelsList className="hotels__list">
+        <HotelsList className="hotels-list">
           {hotels.map(hotel => (
             <HotelItem key={hotel.name} {...hotel} />
           ))}
@@ -96,15 +96,15 @@ class HotelList extends Component {
   }
 
   render() {
-    const { hotels, filterKey } = this.state;
+    const { hotels } = this.state;
 
-    const HOTEL_FILTERS = {
-      'BY_ACTIVE': hotels.map(hotel => hotel.name),
-      'BY_FACILITY': hotels.map(hotel => hotel.facilities)
-    };
+    // const HOTEL_FILTERS = {
+    //   'BY_ACTIVE': hotels.map(hotel => hotel.name),
+    //   'BY_FACILITY': hotels.map(hotel => hotel.facilities)
+    // };
 
-    const filteredHotels = HOTEL_FILTERS[filterKey];
-    console.log(filteredHotels)
+    // const filteredHotels = HOTEL_FILTERS[filterKey];
+    // console.log(filteredHotels)
 
     return (
       hotels && hotels.length ? this.renderData(hotels) : this.renderLoading()
