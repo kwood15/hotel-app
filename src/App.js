@@ -1,28 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+// import { ThemeProvider } from 'styled-components';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import { Header } from './components/shared/Header';
+import { Main } from './components/shared/Main';
+import { Footer } from './components/shared/Footer';
+// import { GlobalStyle } from './components/shared/SharedStyles';
+
+library.add(faStroopwafel);
+
+const App = () => (
+  <section>
+    <Header />
+    <Main />
+    <Footer />
+  </section>
+);
+
+// <ThemeProvider theme={theme}></ThemeProvider>
 
 export default App;
