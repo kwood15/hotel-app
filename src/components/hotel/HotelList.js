@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import HotelItem from './HotelItem';
-
+import Facilities from '../facilities';
+import Sort from '../sort';
 import { HotelsWrapper, HotelsList } from './HotelsStyles';
-import { FiltersWrapper, FiltersList, FiltersListItem } from '../filter/FiltersStyles';
 
 class HotelList extends Component {
   constructor(props) {
-  super(props)
+    super(props)
     this.state = {
       hotels: [],
-      filterValue: '',
-      starRatingValue: 0
+      filteredHotels: [],
+      starRatingValue: 0,
+      facilitySelected: false,
+      facilityChosen: ''
     }
   }
 
@@ -28,14 +30,15 @@ class HotelList extends Component {
   saveData(data) {
     this.setState({
       hotels: data
-    })
+    });
   }
 
   handleClick = event => {
+    const facilityChosen = event.target.textContent;
     this.setState({
-      hotels: this.state.hotels.filter(x => x)
-    });
-    console.log(this.state.hotels);
+      facilitySelected: true,
+      facilityChosen
+    }, () => this.filterHotels());
   }
 
   handleChange = event => {
@@ -69,42 +72,36 @@ class HotelList extends Component {
     });
   }
 
+  filterHotels() {
+    let { hotels, filteredHotels, facilityChosen } = this.state;
+
+    hotels.map(hotel => {
+      if (hotel.facilities.length && hotel.facilities.indexOf(facilityChosen) === -1) {
+        filteredHotels.push(hotel);
+        filteredHotels
+          .map(filteredItem => filteredItem)
+          .filter((filteredItem, filteredId, arr) => arr.indexOf(filteredItem) === filteredId);
+          this.setState({
+            hotels: filteredHotels
+          });
+      }
+      return filteredHotels;
+    });
+  }
+
   renderData(hotels) {
     const { starRatingValue } = this.state;
     return (
       <HotelsWrapper className="search-results hotels">
         <h1>Search results for ...</h1>
-
-        <FiltersWrapper className="filters">
-          <FiltersList>
-            {hotels.map(hotel => (
-              <FiltersListItem key={hotel.name}>
-                {hotel.facilities.map((facility, index) => (
-                  <button key={index} onClick={this.handleClick} value={facility}>{facility}</button>
-                ))}
-              </FiltersListItem>
-            ))}
-          </FiltersList>
-        </FiltersWrapper>
-
-        <div className="sort-by">
-          <form onSubmit={this.handleSubmit}>
-            <label>Sort by:</label>
-            <button onClick={this.sortByRatingDesc}>High Rating</button>
-            <button onClick={this.sortByRatingAsc}>Low Rating</button>
-          </form>
-        </div>
-
-        <div className="sort-by">
-          <form onSubmit={this.handleSubmit}>
-            <label>Sort by:</label>
-            <select value={starRatingValue} onChange={this.handleChange}>
-              <option value="High Rating">High Rating</option>
-              <option value="Low Rating">Low Rating</option>
-            </select>
-          </form>
-        </div>
-
+        <Facilities hotels={hotels} handleClick={this.handleClick} />
+        <Sort
+          starRatingValue={starRatingValue}
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          sortByRatingDesc={this.sortByRatingDesc}
+          sortByRatingAsc={this.sortByRatingAsc}
+        />
         <HotelsList className="hotels-list">
           {hotels.map(hotel => (
             <HotelItem key={hotel.name} {...hotel} />
@@ -122,7 +119,9 @@ class HotelList extends Component {
     const { hotels } = this.state;
 
     return (
-      hotels && hotels.length ? this.renderData(hotels) : this.renderLoading()
+      <Fragment>
+        {hotels && hotels.length ? this.renderData(hotels) : this.renderLoading()}
+      </Fragment>
     );
   }
 }

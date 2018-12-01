@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from './Theme';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -7,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    color: blue
+    background: blue;
   }
 
   ul {

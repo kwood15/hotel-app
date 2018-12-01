@@ -1,3 +1,4 @@
 export const theme = {
-  fontFamily: 'Helvetica Neue'
+  fontFamily: 'Helvetica Neue',
+  primary: 'red'
 };
