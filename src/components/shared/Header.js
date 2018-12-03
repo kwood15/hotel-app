@@ -1,19 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Flex, Box } from '@rebass/grid';
 import Search from '../search';
+import { HeaderWrapper, Logo } from './HeaderStyles';
+import logo from '../../img/logo.svg';
 
 export const Header = () => (
-  <header>
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/search-results/hotels">Hotels</Link>
-        </li>
-      </ul>
-    </nav>
-    <Search />
-  </header>
+  <HeaderWrapper >
+    <Flex justifyContent="space-between">
+      <Box>
+        <Logo src={logo} alt="Company logo" />
+      </Box>
+      <nav>
+        <ul>
+          <li>
+            <NavLink to="/">Cards</NavLink>
+          </li>
+          <li>
+            <NavLink to="/search-results/hotels">Cards</NavLink>
+          </li>
+        </ul>
+      </nav>
+      <Search />
+    </Flex>
+  </HeaderWrapper>
+
+  // <FontAwesomeIcon icon="hotel" size="3x" color="white" />
 );

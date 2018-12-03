@@ -1,15 +1,21 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle }  from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   body {
     font-family: ${props => props.theme.fontFamily};
+    margin: 0;
   }
 
-  h1 {
-    background: blue;
+  h1, h2, h3, h4, h5, h6 {
+    color: ${props => props.theme.headingColor};
   }
+`;
 
-  ul {
-    list-style: none;
-  }
-`
+export const Title = styled.h1`
+  font-size: 1.5em;
+  color: ${props => props.theme.primaryColor}
+`;
+
+export const NavLink = styled.a`
+  color: ${props => props.theme.primaryColor}
+`;

@@ -1,19 +1,19 @@
 import React from 'react';
-import { FacilitiesWrapper, FacilitiesList, FacilitiesListItem } from './FacilitiesStyles';
+import { Flex, Box } from '@rebass/grid';
 
 const Facilities = ({ hotels, handleClick }) => {
   return (
-    <FacilitiesWrapper className="filters filters--facilities">
-      <FacilitiesList>
+    <Flex>
+      <Flex flexDirection="column">
         {hotels.map(hotel => (
-          <FacilitiesListItem key={hotel.name}>
+          <Box key={hotel.name}>
             {hotel.facilities.map((facility, index) => (
               <button key={index} onClick={handleClick}>{facility}</button>
             ))}
-          </FacilitiesListItem>
+          </Box>
         ))}
-      </FacilitiesList>
-    </FacilitiesWrapper>
+      </Flex>
+    </Flex>
   );
 }
 

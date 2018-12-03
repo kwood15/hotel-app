@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactStars from 'react-stars';
-import { HotelsListItem } from './HotelsStyles';
+import { Box } from '@rebass/grid';
 
 const HotelItem = ({ name, starRating, facilities }) => (
-  <HotelsListItem>
-    <h3>{name}</h3>
+  <Box>
+    <h3>{name.toUpperCase().split('L').join('L ')}</h3>
     <ReactStars count={starRating} size={24} color1={'#ffd700'} />
     <span>{starRating} star rating</span>
     <ul>
@@ -12,7 +12,7 @@ const HotelItem = ({ name, starRating, facilities }) => (
         <li key={index}>{facility}</li>
       ))}
     </ul>
-  </HotelsListItem>
+  </Box>
 );
 
 export default HotelItem;

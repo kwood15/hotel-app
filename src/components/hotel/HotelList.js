@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import HotelItem from './HotelItem';
+import { Flex, Box } from '@rebass/grid';
+
 import Facilities from '../facilities';
 import Sort from '../sort';
-import { HotelsWrapper, HotelsList } from './HotelsStyles';
+import HotelItem from './HotelItem';
+
+import { Title } from '../shared/SharedStyles';
 
 class HotelList extends Component {
   constructor(props) {
@@ -92,22 +95,22 @@ class HotelList extends Component {
   renderData(hotels) {
     const { starRatingValue } = this.state;
     return (
-      <HotelsWrapper className="search-results hotels">
-        <h1>Search results for ...</h1>
+      <Flex flexDirection="column" px={4}>
+        <Title>Search results for ...</Title>
         <Facilities hotels={hotels} handleClick={this.handleClick} />
         <Sort
           starRatingValue={starRatingValue}
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
-          sortByRatingDesc={this.sortByRatingDesc}
-          sortByRatingAsc={this.sortByRatingAsc}
         />
-        <HotelsList className="hotels-list">
+        <Flex justifyContent="center">
           {hotels.map(hotel => (
-            <HotelItem key={hotel.name} {...hotel} />
+            <Flex key={hotel.name} width={[ 1, 1/2, 1/4 ]} justifyContent="center">
+              <HotelItem {...hotel} />
+            </Flex>
           ))}
-        </HotelsList>
-      </HotelsWrapper>
+        </Flex>
+      </Flex>
     );
   }
 
