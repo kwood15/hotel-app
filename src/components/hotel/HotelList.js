@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Flex, Box } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 import Facilities from '../facilities';
 import Sort from '../sort';

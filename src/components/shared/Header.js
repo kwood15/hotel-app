@@ -8,7 +8,7 @@ import logo from '../../img/logo.svg';
 
 export const Header = () => (
   <HeaderWrapper >
-    <Flex justifyContent="space-between">
+    <Flex justifyContent="space-between" alignItems="center">
       <Box>
         <Logo src={logo} alt="Company logo" />
       </Box>

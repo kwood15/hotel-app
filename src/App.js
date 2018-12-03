@@ -12,6 +12,9 @@ import { Footer } from './components/shared/Footer';
 export const theme = {
   white: '#ffffff',
   primaryColor: '#411485',
+  secondaryColor: '#411485',
+  offersColor: '#E6175C',
+  midGrey: '##e0e0e0',
   headingColor: '#333333',
   fontFamily: 'Lato, Arial, sans-serif'
 };

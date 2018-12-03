@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Input } from '../shared/SharedStyles';
 
 class Search extends Component {
   constructor() {
@@ -34,7 +35,7 @@ class Search extends Component {
   render() {
     return (
       <form id="search" onSubmit={this.handleSubmit} className="Search">
-        <input
+        <Input
           onKeyUp={this.handleKeyUp}
           onChange={this.handleChange}
           type="search"

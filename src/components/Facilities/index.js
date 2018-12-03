@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Box } from '@rebass/grid';
+import { Badge } from '../shared/SharedStyles';
 
 const Facilities = ({ hotels, handleClick }) => {
   return (
@@ -8,7 +9,7 @@ const Facilities = ({ hotels, handleClick }) => {
         {hotels.map(hotel => (
           <Box key={hotel.name}>
             {hotel.facilities.map((facility, index) => (
-              <button key={index} onClick={handleClick}>{facility}</button>
+              <Badge key={index} onClick={handleClick}>{facility}</Badge>
             ))}
           </Box>
         ))}

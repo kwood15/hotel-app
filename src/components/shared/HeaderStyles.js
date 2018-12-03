@@ -3,7 +3,7 @@ import { NavLink } from './SharedStyles';
 
 export const HeaderWrapper = styled.header`
   background: ${props => props.theme.primaryColor};
-  padding: 20px;
+  padding: 8px 20px;
 `;
 
 export const StyledLink = styled(NavLink)`
