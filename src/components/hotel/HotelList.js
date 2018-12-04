@@ -7,6 +7,7 @@ import Container from '../shared/Container';
 import Checkbox from '../form/Checkbox';
 
 import { Title, Form } from '../shared/SharedStyles';
+import { FacilityGroup, FacilityLabel } from '../facilities/FacilityStyles';
 import { HotelListSection } from './HotelStyles';
 
 class HotelList extends Component {
@@ -102,18 +103,21 @@ class HotelList extends Component {
               handleChange={this.handleSortByChange}
             />
           </Flex>
-          <Flex>
+          <Flex as="section" className="hotel-results">
             <Flex width={[1, 1/4]}  mr={4}>
+              <h3>Facilities</h3>
               <Form className="facilities">
                 {hotels.map(hotel => (
                   <Fragment key={hotel.name}>
                     {hotel.facilities.map((facility, index) => (
-                      <fieldset key={index}>
-                        <label className="facilities__label" htmlFor={facility} key={index} aria-label={facility}>
-                          {facility}
-                        </label>
-                        <Checkbox id={facility} name={facility} checked={checkedItems.get(facility)} onChange={this.handleFacilityChange} />
-                      </fieldset>
+                      <FacilityGroup className="facilities__group" key={index}>
+                        <div className="checkbox">
+                          <Checkbox id={facility} name={facility} checked={checkedItems.get(facility)} onChange={this.handleFacilityChange} />
+                          <FacilityLabel className="facilities__label checkbox__label" htmlFor={facility} key={index} aria-label={facility}>
+                            {facility}
+                          </FacilityLabel>
+                        </div>
+                      </FacilityGroup>
                     ))}
                   </Fragment>
                 ))}
@@ -121,7 +125,7 @@ class HotelList extends Component {
             </Flex>
             <Flex width={[1, 3/4]} flexDirection="column">
               <HotelListSection className="hotel-results">
-                <Title>Search results for ...</Title>
+                <Title>Hotels in Manchester</Title>
                 {hotels.map(hotel => (
                   <HotelItem key={hotel.name} {...hotel} />
                 ))}

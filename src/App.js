@@ -8,6 +8,7 @@ import { faCheck, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Header } from './components/shared/Header';
 import { Main } from './components/shared/Main';
 import { Footer } from './components/shared/Footer';
+import './scss/main.scss';
 
 export const theme = {
   textColor: '#383838',

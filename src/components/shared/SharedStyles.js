@@ -28,10 +28,6 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     color: ${props => props.theme.headingColor};
   }
-
-  fieldset {
-    border: 0;
-  }
 `;
 
 export const ContainerWrapper = styled(Box)`
