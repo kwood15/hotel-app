@@ -72,6 +72,7 @@ export const Badge = styled(Button)`
 `;
 
 export const Input = styled.input`
+  font-size: 1rem;
   border: 0;
   padding: 8px 14px 8px;
   border-radius: 2px;

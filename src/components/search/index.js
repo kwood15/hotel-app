@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Input, Button } from '../shared/SharedStyles';
+import { SearchInput, SearchButton } from './SearchStyles';
 
 class Search extends Component {
   constructor() {
@@ -36,16 +36,16 @@ class Search extends Component {
   render() {
     return (
       <form id="search" onSubmit={this.handleSubmit} className="Search">
-        <Input
+        <SearchInput
           onKeyUp={this.handleKeyUp}
           onChange={this.handleChange}
           type="search"
           placeholder="Find a hotel..."
           value={this.state.searchTerm}
         />
-        <Button type="submit">
+        <SearchButton type="submit">
           <FontAwesomeIcon icon="search" size="sm" color="white" />
-        </Button>
+        </SearchButton>
       </form>
     );
   }
