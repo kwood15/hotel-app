@@ -17,12 +17,12 @@ export const HotelItemWrapper = styled.div`
 
 export const HotelItemTitle = styled.h3`
   font-size: 1.15em;
-  margin: 0;
+  margin: 0.5rem;
 `;
 
 export const HotelItemImage = styled.div`
   color: ${props => props.theme.midGrey};
-  background-color: ${props => props.theme.white};
+  background-color: ${props => props.theme.lightGrey};
   min-height: 125px;
   display: flex;
   flex: 0 0 33.33333%;

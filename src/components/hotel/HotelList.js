@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import { Flex, Box } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 import Sort from '../sort';
 import HotelItem from './HotelItem';
 import Container from '../shared/Container';
 import Checkbox from '../form/Checkbox';
 
-import { Title } from '../shared/SharedStyles';
+import { Title, Form } from '../shared/SharedStyles';
 import { HotelListSection } from './HotelStyles';
 
 class HotelList extends Component {
@@ -81,9 +81,9 @@ class HotelList extends Component {
     const { hotels, filteredHotels } = this.state;
     hotels.map(hotel => {
       if (hotel.facilities.includes(facility)) {
-        filteredHotels.push(hotel);
+        return filteredHotels.push(hotel);
       }
-      return filteredHotels;
+      return false;
     });
     this.setState({
       hotels: filteredHotels
@@ -104,16 +104,20 @@ class HotelList extends Component {
           </Flex>
           <Flex>
             <Flex width={[1, 1/4]}  mr={4}>
-              {hotels.map(hotel => (
-                <Box as="form" key={hotel.name}>
-                  {hotel.facilities.map((facility, index) => (
-                    <label key={index}>
-                      {facility}
-                      <Checkbox name={facility} checked={checkedItems.get(facility)} onChange={this.handleFacilityChange} />
-                    </label>
+              <Form className="facilities">
+                {hotels.map(hotel => (
+                  <Fragment key={hotel.name}>
+                    {hotel.facilities.map((facility, index) => (
+                      <fieldset key={index}>
+                        <label className="facilities__label" htmlFor={facility} key={index} aria-label={facility}>
+                          {facility}
+                        </label>
+                        <Checkbox id={facility} name={facility} checked={checkedItems.get(facility)} onChange={this.handleFacilityChange} />
+                      </fieldset>
+                    ))}
+                  </Fragment>
                 ))}
-                </Box>
-              ))}
+              </Form>
             </Flex>
             <Flex width={[1, 3/4]} flexDirection="column">
               <HotelListSection className="hotel-results">

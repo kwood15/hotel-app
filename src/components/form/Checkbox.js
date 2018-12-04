@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Checkbox = ({ type = 'checkbox', name, checked = false, onChange }) => (
-  <input type={type} name={name} checked={checked} onChange={onChange} />
+const Checkbox = ({ id, type = 'checkbox', name, checked = false, onChange }) => (
+  <input id={id} type={type} name={name} checked={checked} onChange={onChange} />
 );
 
 Checkbox.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   checked: PropTypes.bool,

@@ -28,6 +28,10 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     color: ${props => props.theme.headingColor};
   }
+
+  fieldset {
+    border: 0;
+  }
 `;
 
 export const ContainerWrapper = styled(Box)`
@@ -53,6 +57,7 @@ export const NavigationLink = styled(NavLink)`
 export const Button = styled.button`
   color: ${props => props.theme.primaryColor};
   background-color: ${props => props.theme.secondaryColor};
+  cursor: pointer;
   border: none;
   border-radius: .3125em;
   font-weight: bold;
@@ -71,11 +76,16 @@ export const Badge = styled(Button)`
   background-color: ${props => props.theme.white};
 `;
 
+
 export const Input = styled.input`
   font-size: 1rem;
   border: 0;
   padding: 8px 14px 8px;
   border-radius: 2px;
+`;
+
+export const Form = styled.form`
+  flex: 1;
 `;
 
 export const FooterWrapper = styled.footer`

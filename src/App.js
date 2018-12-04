@@ -20,7 +20,8 @@ export const theme = {
   lightGrey: '#e0e0e0',
   midGrey: '#e0e0e0',
   headingColor: '#333333',
-  fontFamily: 'Lato, Arial, sans-serif'
+  fontFamily: 'Lato, Arial, sans-serif',
+  breakpoints: [ '32em', '48em', '64em' ]
 };
 
 library.add(faCheck, faSearch);

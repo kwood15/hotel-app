@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Flex } from '@rebass/grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SearchInput, SearchButton } from './SearchStyles';
 
@@ -35,7 +36,7 @@ class Search extends Component {
 
   render() {
     return (
-      <form id="search" onSubmit={this.handleSubmit} className="Search">
+      <Flex as="form" onSubmit={this.handleSubmit} className="Search">
         <SearchInput
           onKeyUp={this.handleKeyUp}
           onChange={this.handleChange}
@@ -46,7 +47,7 @@ class Search extends Component {
         <SearchButton type="submit">
           <FontAwesomeIcon icon="search" size="sm" color="white" />
         </SearchButton>
-      </form>
+      </Flex>
     );
   }
 }
