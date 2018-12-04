@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Flex, Box } from '@rebass/grid';
+
 import Search from '../search';
+import { NavigationLink } from './SharedStyles';
 import { HeaderWrapper, Logo } from './HeaderStyles';
 import logo from '../../img/logo.svg';
 
@@ -12,19 +12,19 @@ export const Header = () => (
       <Box>
         <Logo src={logo} alt="Company logo" />
       </Box>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Cards</NavLink>
-          </li>
-          <li>
-            <NavLink to="/search-results/hotels">Cards</NavLink>
-          </li>
-        </ul>
-      </nav>
+      <Flex flex="1 1 auto">
+        <nav>
+          <ul>
+            <li>
+              <NavigationLink to="/" />
+            </li>
+            <li>
+              <NavigationLink to="/search-results/hotels">Cards</NavigationLink>
+            </li>
+          </ul>
+        </nav>
+      </Flex>
       <Search />
     </Flex>
   </HeaderWrapper>
-
-  // <FontAwesomeIcon icon="hotel" size="3x" color="white" />
 );

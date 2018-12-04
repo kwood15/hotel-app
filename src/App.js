@@ -3,23 +3,27 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './components/shared/SharedStyles';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHotel } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { Header } from './components/shared/Header';
 import { Main } from './components/shared/Main';
 import { Footer } from './components/shared/Footer';
 
 export const theme = {
-  white: '#ffffff',
+  textColor: '#383838',
+  bodyColor: '#f9f8f6',
   primaryColor: '#411485',
-  secondaryColor: '#411485',
+  secondaryColor: '#fcc82b',
   offersColor: '#E6175C',
-  midGrey: '##e0e0e0',
+  white: '#ffffff',
+  black: '#000000',
+  lightGrey: '#e0e0e0',
+  midGrey: '#e0e0e0',
   headingColor: '#333333',
   fontFamily: 'Lato, Arial, sans-serif'
 };
 
-library.add(faHotel);
+library.add(faCheck, faSearch);
 
 const App = () => (
   <ThemeProvider theme={theme}>

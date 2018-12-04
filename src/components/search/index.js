@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Input } from '../shared/SharedStyles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Input, Button } from '../shared/SharedStyles';
 
 class Search extends Component {
   constructor() {
@@ -42,7 +43,9 @@ class Search extends Component {
           placeholder="Find a hotel..."
           value={this.state.searchTerm}
         />
-        <button type="submit">Search</button>
+        <Button type="submit">
+          <FontAwesomeIcon icon="search" size="sm" color="white" />
+        </Button>
       </form>
     );
   }

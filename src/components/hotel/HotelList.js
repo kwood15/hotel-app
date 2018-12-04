@@ -1,11 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { Flex } from '@rebass/grid';
+import { Flex, Box } from '@rebass/grid';
 
-import Facilities from '../facilities';
 import Sort from '../sort';
 import HotelItem from './HotelItem';
+import Container from '../shared/Container';
+import Checkbox from '../form/Checkbox';
 
 import { Title } from '../shared/SharedStyles';
+import { HotelListSection } from './HotelStyles';
 
 class HotelList extends Component {
   constructor(props) {
@@ -14,8 +16,7 @@ class HotelList extends Component {
       hotels: [],
       filteredHotels: [],
       starRatingValue: 0,
-      facilitySelected: false,
-      facilityChosen: ''
+      checkedItems: new Map()
     }
   }
 
@@ -36,15 +37,16 @@ class HotelList extends Component {
     });
   }
 
-  handleClick = event => {
-    const facilityChosen = event.target.textContent;
-    this.setState({
-      facilitySelected: true,
-      facilityChosen
-    }, () => this.filterHotels());
+  handleFacilityChange = event => {
+    const facility = event.target.name;
+    const isChecked = event.target.checked;
+    this.setState(prevState => ({
+      checkedItems: prevState.checkedItems.set(facility, isChecked)
+    }));
+   this.filterHotels(facility);
   }
 
-  handleChange = event => {
+  handleSortByChange = event => {
     if (event.target.value === 'High Rating') {
       this.sortByRatingDesc();
     } else {
@@ -75,42 +77,55 @@ class HotelList extends Component {
     });
   }
 
-  filterHotels() {
-    let { hotels, filteredHotels, facilityChosen } = this.state;
-
+  filterHotels(facility) {
+    const { hotels, filteredHotels } = this.state;
     hotels.map(hotel => {
-      if (hotel.facilities.length && hotel.facilities.indexOf(facilityChosen) === -1) {
+      if (hotel.facilities.includes(facility)) {
         filteredHotels.push(hotel);
-        filteredHotels
-          .map(filteredItem => filteredItem)
-          .filter((filteredItem, filteredId, arr) => arr.indexOf(filteredItem) === filteredId);
-          this.setState({
-            hotels: filteredHotels
-          });
       }
       return filteredHotels;
+    });
+    this.setState({
+      hotels: filteredHotels
     });
   }
 
   renderData(hotels) {
-    const { starRatingValue } = this.state;
+    const { starRatingValue, checkedItems } = this.state;
     return (
-      <Flex flexDirection="column" px={4}>
-        <Title>Search results for ...</Title>
-        <Facilities hotels={hotels} handleClick={this.handleClick} />
-        <Sort
-          starRatingValue={starRatingValue}
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
-        <Flex justifyContent="center">
-          {hotels.map(hotel => (
-            <Flex key={hotel.name} width={[ 1, 1/2, 1/4 ]} justifyContent="center">
-              <HotelItem {...hotel} />
+      <Container>
+        <Flex flexDirection="column" px={4}>
+          <Flex justifyContent="flex-end" alignItems="center" my={4}>
+            <Sort
+              starRatingValue={starRatingValue}
+              handleSubmit={this.handleSubmit}
+              handleChange={this.handleSortByChange}
+            />
+          </Flex>
+          <Flex>
+            <Flex width={[1, 1/4]}  mr={4}>
+              {hotels.map(hotel => (
+                <Box as="form" key={hotel.name}>
+                  {hotel.facilities.map((facility, index) => (
+                    <label key={index}>
+                      {facility}
+                      <Checkbox name={facility} checked={checkedItems.get(facility)} onChange={this.handleFacilityChange} />
+                    </label>
+                ))}
+                </Box>
+              ))}
             </Flex>
-          ))}
+            <Flex width={[1, 3/4]} flexDirection="column">
+              <HotelListSection className="hotel-results">
+                <Title>Search results for ...</Title>
+                {hotels.map(hotel => (
+                  <HotelItem key={hotel.name} {...hotel} />
+                ))}
+              </HotelListSection>
+            </Flex>
+          </Flex>
         </Flex>
-      </Flex>
+      </Container>
     );
   }
 
