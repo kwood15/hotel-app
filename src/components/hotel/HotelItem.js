@@ -27,11 +27,12 @@ const HotelItem = ({ name, starRating, facilities }) => (
           {starRating} star rating
         </span>
       </Flex>
-      <Flex flexDirection="column" mr={3}>
+      <Flex flex="1 1 auto" flexDirection="column" mr={3}>
         <ul className="facilities-list">
           {facilities.map((facility, index) => (
             <li className="facilities-list__item"key={index}>
-              <p><FontAwesomeIcon color={`${props => props.theme.primaryColor}`} icon="check" />{facility}</p>
+              <FontAwesomeIcon color="#399cda" icon="check" />
+              <span className="facility-name">{facility}</span>
             </li>
           ))}
         </ul>

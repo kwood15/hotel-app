@@ -2,7 +2,7 @@ import React from 'react';
 import { ContainerWrapper } from './SharedStyles';
 
 const Container = props => (
-  <ContainerWrapper {...props} mx='auto' css={{ maxWidth: '1024px' }} />
+  <ContainerWrapper {...props} mx='auto' px={4} />
 );
 
 Container.defaultProps = {

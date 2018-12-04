@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from './components/shared/SharedStyles';
+import { GlobalStyle } from './components/shared/GlobalStyles';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheck, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +20,7 @@ export const theme = {
   black: '#000000',
   lightGrey: '#e0e0e0',
   midGrey: '#e0e0e0',
+  blue: '#399cda',
   headingColor: '#333333',
   fontFamily: 'Lato, Arial, sans-serif',
   breakpoints: [ '32em', '48em', '64em' ]

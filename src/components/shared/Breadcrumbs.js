@@ -1,7 +1,23 @@
 import React from 'react';
+import { Flex } from '@rebass/grid';
+import { BreadcrumbLink } from './SharedStyles';
 
 export const Breadcrumbs = () => (
-  <div itemScope="" itemType="http://schema.org/BreadcrumbList">
-
-  </div>
+  <nav aria-label="Breadcrumb" className="breadcrumbs">
+    <Flex as="ol" itemScope itemType="http://schema.org/BreadcrumbList" my={2}>
+      <li itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem">
+        <BreadcrumbLink to="/" itemProp="item" activeClassName="active">
+          <span itemProp="name">Home</span>
+          <meta itemProp="position" content="1" />
+        </BreadcrumbLink>
+      </li>
+      <li><span className="separator">></span></li>
+      <li itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem">
+        <BreadcrumbLink to="/search-results/hotels" itemProp="item">
+          <span itemProp="name">Hotels</span>
+          <meta itemProp="position" content="2" />
+        </BreadcrumbLink>
+      </li>
+    </Flex>
+  </nav>
 );

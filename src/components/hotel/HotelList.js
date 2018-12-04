@@ -3,7 +3,6 @@ import { Flex } from '@rebass/grid';
 
 import Sort from '../sort';
 import HotelItem from './HotelItem';
-import Container from '../shared/Container';
 import Checkbox from '../form/Checkbox';
 
 import { Title, Form } from '../shared/SharedStyles';
@@ -78,40 +77,47 @@ class HotelList extends Component {
     });
   }
 
+  // TODO
   filterHotels(facility) {
-    const { hotels, filteredHotels } = this.state;
-    hotels.map(hotel => {
-      if (hotel.facilities.includes(facility)) {
-        return filteredHotels.push(hotel);
-      }
-      return false;
-    });
-    this.setState({
-      hotels: filteredHotels
-    });
+    console.log(facility);
+    // const { hotels, filteredHotels } = this.state;
+    // hotels.map(hotel => {
+    //   if (hotel.facilities.includes(facility)) {
+    //     filteredHotels.push(hotel);
+    //     this.setState({
+    //       hotels: filteredHotels
+    //     });
+    //   }
+    //   return false;
+    // });
+
+    // const filteredHotel = hotels.filter(hotel => {
+    //   return hotel.facilities.includes(facility);
+    // });
   }
 
   renderData(hotels) {
     const { starRatingValue, checkedItems } = this.state;
     return (
-      <Container>
-        <Flex flexDirection="column" px={4}>
-          <Flex justifyContent="flex-end" alignItems="center" my={4}>
-            <Sort
-              starRatingValue={starRatingValue}
-              handleSubmit={this.handleSubmit}
-              handleChange={this.handleSortByChange}
-            />
-          </Flex>
-          <Flex as="section" className="hotel-results">
-            <Flex width={[1, 1/4]}  mr={4}>
-              <h3>Facilities</h3>
-              <Form className="facilities">
+      <Flex flexDirection="column">
+        <Flex justifyContent="flex-end" alignItems="center" my={4}>
+          <Sort
+            starRatingValue={starRatingValue}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleSortByChange}
+          />
+        </Flex>
+        <Flex as="section" className="hotel-results">
+          <Flex width={[1, 1/4]}  mr={4}>
+            <Form className="facilities">
+              <legend>Facilities</legend>
+              <fieldset>
                 {hotels.map(hotel => (
-                  <Fragment key={hotel.name}>
+                  <div key={hotel.name}>
                     {hotel.facilities.map((facility, index) => (
                       <FacilityGroup className="facilities__group" key={index}>
                         <div className="checkbox">
+                          {/* TODO */}
                           <Checkbox id={facility} name={facility} checked={checkedItems.get(facility)} onChange={this.handleFacilityChange} />
                           <FacilityLabel className="facilities__label checkbox__label" htmlFor={facility} key={index} aria-label={facility}>
                             {facility}
@@ -119,21 +125,21 @@ class HotelList extends Component {
                         </div>
                       </FacilityGroup>
                     ))}
-                  </Fragment>
+                  </div>
                 ))}
-              </Form>
-            </Flex>
-            <Flex width={[1, 3/4]} flexDirection="column">
-              <HotelListSection className="hotel-results">
-                <Title>Hotels in Manchester</Title>
-                {hotels.map(hotel => (
-                  <HotelItem key={hotel.name} {...hotel} />
-                ))}
-              </HotelListSection>
-            </Flex>
+              </fieldset>
+            </Form>
+          </Flex>
+          <Flex width={[1, 3/4]} flexDirection="column">
+            <HotelListSection className="hotel-results">
+              <Title>Hotels in Manchester</Title>
+              {hotels.map(hotel => (
+                <HotelItem key={hotel.name} {...hotel} />
+              ))}
+            </HotelListSection>
           </Flex>
         </Flex>
-      </Container>
+      </Flex>
     );
   }
 

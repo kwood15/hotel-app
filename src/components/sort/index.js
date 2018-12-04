@@ -10,10 +10,13 @@ const Sort = ({
     <Box>
       <form onSubmit={handleSubmit}>
         <label>Sort by:</label>
-        <select value={starRatingValue} onChange={handleChange}>
-          <option value="High Rating">High Rating</option>
-          <option value="Low Rating">Low Rating</option>
-        </select>
+        <div className="select">
+          <select value={starRatingValue} onChange={handleChange}>
+            <option value="High Rating">High Rating</option>
+            <option value="Low Rating">Low Rating</option>
+          </select>
+          <div className="select__arrow"></div>
+        </div>
       </form>
     </Box>
   </Flex>

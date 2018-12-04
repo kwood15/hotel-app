@@ -8,7 +8,7 @@ import logo from '../../img/logo.svg';
 
 export const Header = () => (
   <HeaderWrapper className="header">
-    <Flex width={[1]} justifyContent="space-between" alignItems="center">
+    <Flex justifyContent="space-between" alignItems="center">
       <Box>
         <NavigationLink to="/">
           <Logo src={logo} alt="Company logo" />
@@ -18,10 +18,7 @@ export const Header = () => (
         <nav className="navigation">
           <ul>
             <li>
-              <NavigationLink to="/" />
-            </li>
-            <li>
-              <NavigationLink to="/search-results/hotels">Hotels</NavigationLink>
+              <NavigationLink to="/search-results/hotels" activeClassName="active">Hotels</NavigationLink>
             </li>
           </ul>
         </nav>

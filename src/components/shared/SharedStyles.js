@@ -1,34 +1,6 @@
-import styled, { createGlobalStyle }  from 'styled-components';
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Box } from '@rebass/grid';
-
-export const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: ${props => props.theme.bodyColor};
-    font-family: ${props => props.theme.fontFamily};
-    font-size: 1rem;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  a {
-    color: ${props => props.theme.primaryColor};
-  }
-
-  p {
-    color: ${props => props.theme.black};
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: ${props => props.theme.headingColor};
-  }
-`;
 
 export const ContainerWrapper = styled(Box)`
   max-width: 1024px;
@@ -42,12 +14,19 @@ export const Title = styled.h1`
 
 export const Link = styled.a`
   color: ${props => props.theme.primaryColor};
-  text-decoration: none;
 `;
 
 export const NavigationLink = styled(NavLink)`
   color: ${props => props.theme.white};
-  text-decoration: none;
+`;
+
+export const BreadcrumbLink = styled(NavLink)`
+  font-size: 0.85rem;
+  color: ${props => props.theme.textColor};
+  &.active {
+    color: ${props => props.theme.blue};
+    text-decoration: underline;
+  }
 `;
 
 export const Button = styled.button`
@@ -68,10 +47,13 @@ export const Button = styled.button`
 
 export const Badge = styled(Button)`
   border-radius: 5px;
-  color: ${props => props.theme.primaryColor};
-  background-color: ${props => props.theme.white};
+  color: ${props => props.theme.white};
+  background-color: ${props => props.theme.black};
 `;
 
+export const Form = styled.form`
+  flex: 1;
+`;
 
 export const Input = styled.input`
   font-size: 1rem;
@@ -80,12 +62,9 @@ export const Input = styled.input`
   border-radius: 2px;
 `;
 
-export const Form = styled.form`
-  flex: 1;
-`;
-
 export const FooterWrapper = styled.footer`
   position: sticky;
   margin-top: 32px;
   background-color: ${props => props.theme.midGrey};
 `;
+
