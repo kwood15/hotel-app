@@ -9,33 +9,21 @@ class HotelList extends Component {
   renderData(hotels, filteredHotels) {
     if (filteredHotels && filteredHotels.length) {
       return (
-        <Flex flexDirection="column">
-          <Flex as="section" className="hotel-results">
-            <Flex width={[1, 1, 3/4]} flexDirection="column">
-              <HotelListSection className="hotel-results">
-                <Title>Hotels with your chosen facilities</Title>
-                {filteredHotels.map(filteredHotel => (
-                  <HotelItem key={filteredHotel.name} {...filteredHotel} />
-                ))}
-              </HotelListSection>
-            </Flex>
-          </Flex>
-        </Flex>
+        <HotelListSection className="hotel-results">
+          <Title>Hotels with your chosen facilities</Title>
+          {filteredHotels.map(filteredHotel => (
+            <HotelItem key={filteredHotel.name} {...filteredHotel} />
+          ))}
+        </HotelListSection>
       );
     } else {
       return (
-        <Flex flexDirection="column">
-          <Flex as="section" className="hotel-results">
-            <Flex width={[1, 1, 3/4]} flexDirection="column">
-              <HotelListSection className="hotel-results">
-                <Title>Hotels in Manchester</Title>
-                {hotels.map(hotel => (
-                  <HotelItem key={hotel.name} {...hotel} />
-                ))}
-              </HotelListSection>
-            </Flex>
-          </Flex>
-        </Flex>
+        <HotelListSection className="hotel-results">
+          <Title>Hotels in Manchester</Title>
+          {hotels.map(hotel => (
+            <HotelItem key={hotel.name} {...hotel} />
+          ))}
+        </HotelListSection>
       );
     }
   }
@@ -48,9 +36,13 @@ class HotelList extends Component {
     const { hotels, filteredHotels } = this.props;
 
     return (
-      <Fragment>
-        {hotels && hotels.length ? this.renderData(hotels, filteredHotels) : this.renderLoading()}
-      </Fragment>
+      <Flex flexDirection="column">
+        <Flex as="section" className="hotel-results">
+          <Flex width={[1, 1, 3/4]} flexDirection="column">
+            {hotels && hotels.length ? this.renderData(hotels, filteredHotels) : this.renderLoading()}
+          </Flex>
+        </Flex>
+      </Flex>
     );
   }
 }
