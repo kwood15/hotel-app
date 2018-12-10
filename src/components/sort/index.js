@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Flex, Box } from '@rebass/grid';
 
 const Sort = ({
@@ -23,3 +24,9 @@ const Sort = ({
 );
 
 export default Sort;
+
+Sort.propTypes = {
+  starRatingValue: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
+};

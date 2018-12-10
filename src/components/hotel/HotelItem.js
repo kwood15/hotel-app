@@ -45,7 +45,7 @@ const HotelItem = ({ name, starRating, facilities }) => (
 HotelItem.propTypes = {
   name: PropTypes.string.isRequired,
   starRating: PropTypes.number.isRequired,
-  facilities: PropTypes.arrayOf(PropTypes.string),
+  facilities: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default HotelItem;

@@ -13,7 +13,7 @@ export const Breadcrumbs = () => (
       </li>
       <li><span className="separator">></span></li>
       <li itemProp="itemListElement" itemScope itemType="http://schema.org/ListItem">
-        <BreadcrumbLink to="/search-results/hotels" itemProp="item">
+        <BreadcrumbLink to="/hotels" itemProp="item">
           <span itemProp="name">Hotels</span>
           <meta itemProp="position" content="2" />
         </BreadcrumbLink>

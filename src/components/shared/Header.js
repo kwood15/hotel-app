@@ -18,7 +18,7 @@ export const Header = () => (
         <nav className="navigation">
           <ul>
             <li>
-              <NavigationLink to="/search-results/hotels" activeClassName="active">Hotels</NavigationLink>
+              <NavigationLink to="/hotels" activeClassName="active">Hotels</NavigationLink>
             </li>
           </ul>
         </nav>
