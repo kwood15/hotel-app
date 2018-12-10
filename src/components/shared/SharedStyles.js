@@ -3,7 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { Box } from '@rebass/grid';
 
 export const ContainerWrapper = styled(Box)`
-  max-width: 1024px;
+  width: 100%;
+  max-width: 1200px;
+  flex: 1;
 `;
 
 export const Title = styled.h1`
@@ -45,12 +47,6 @@ export const Button = styled.button`
   }
 `;
 
-export const Badge = styled(Button)`
-  border-radius: 5px;
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme.black};
-`;
-
 export const Form = styled.form`
   flex: 1;
 `;
@@ -60,11 +56,9 @@ export const Input = styled.input`
   border: 0;
   padding: 8px 14px 8px;
   border-radius: 2px;
+  max-width: 160px;
 `;
 
 export const FooterWrapper = styled.footer`
-  position: sticky;
-  margin-top: 32px;
   background-color: ${props => props.theme.midGrey};
 `;
-

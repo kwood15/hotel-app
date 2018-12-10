@@ -1,12 +1,30 @@
-import { createGlobalStyle }  from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  #root {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+  }
+
+  html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
   body {
+    height: 100%;
     background-color: ${props => props.theme.bodyColor};
     font-family: ${props => props.theme.fontFamily};
+    color: ${props => props.theme.textColor}
     font-size: 1rem;
-    line-height: 1.2;
     margin: 0;
+    padding: 0;
   }
 
   ul, ol {
@@ -35,13 +53,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   legend {
-    font-size: 1rem;
     font-weight: bold;
-  }
-
-  .separator {
-    color: ${props => props.theme.textColor};
-    padding: 0 4px;
-    font-size: 0.85em;
   }
 `;

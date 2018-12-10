@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box } from '@rebass/grid';
+import { Flex } from '@rebass/grid';
 
 const Sort = ({
   starRatingValue,
@@ -8,18 +8,16 @@ const Sort = ({
   handleSubmit
 }) => (
   <Flex>
-    <Box>
-      <form onSubmit={handleSubmit}>
-        <label>Sort by:</label>
-        <div className="select">
-          <select value={starRatingValue} onChange={handleChange}>
-            <option value="High Rating">High Rating</option>
-            <option value="Low Rating">Low Rating</option>
-          </select>
-          <div className="select__arrow"></div>
-        </div>
-      </form>
-    </Box>
+    <form className="sort-by__form" onSubmit={handleSubmit}>
+      <label htmlFor="sortByDropdown u-padding-bottom-medium">Sort by:</label>
+      <div className="sort-by__dropdown select">
+        <select id="sortByDropdown" value={starRatingValue} onChange={handleChange}>
+          <option className="sort-by__dropdown-options" value="High Rating">High Rating</option>
+          <option className="sort-by__dropdown-options" value="Low Rating">Low Rating</option>
+        </select>
+        <div className="select__arrow" />
+      </div>
+    </form>
   </Flex>
 );
 

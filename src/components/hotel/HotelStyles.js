@@ -4,6 +4,7 @@ export const HotelListSection = styled.section`
   border-radius: 6px;
   padding: 20px;
   background-color: ${props => props.theme.midGrey};
+  box-shadow: 1px 1px 1px 1px #b1afaf;
 `;
 
 export const HotelItemWrapper = styled.div`
@@ -17,19 +18,23 @@ export const HotelItemWrapper = styled.div`
 
 export const HotelItemTitle = styled.h3`
   font-size: 1.15em;
-  margin: 0.5rem;
+  margin: 0;
+  margin-top: 0.5rem;
 `;
 
 export const HotelItemImage = styled.div`
-  color: ${props => props.theme.midGrey};
-  background-color: ${props => props.theme.lightGrey};
-  min-height: 125px;
+  background-color: ${props => props.theme.placeholderBackground};
+  min-height: 150px;
   display: flex;
   flex: 0 0 33.33333%;
   align-items: center;
   justify-content: center;
   border: 1px solid #ccc;
   text-transform: uppercase;
-  margin-right: 16px;
+  padding: 6px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  p {
+    color: ${props => props.theme.placeholderColor};
+  }
 `;
-

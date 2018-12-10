@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { Flex } from '@rebass/grid';
 import ReactStars from 'react-stars';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { formatHotelName } from '../../helpers';
 
 import { Button } from '../shared/SharedStyles';
 import { HotelItemWrapper, HotelItemImage, HotelItemTitle } from './HotelStyles';
-
-function formatHotelName(str) {
-  return str.toUpperCase(str).split('L').join('L ');
-}
+import { FacilityList, FacilityListItem } from '../facilities/FacilityStyles';
 
 const HotelItem = ({ name, starRating, facilities }) => (
   <HotelItemWrapper itemScope itemType="http://schema.org/Hotel">
@@ -17,25 +15,29 @@ const HotelItem = ({ name, starRating, facilities }) => (
       <HotelItemImage itemProp="photo" className="hotel__image hotel__image--placeholder">
         <p>Placeholder</p>
       </HotelItemImage>
+
       <Flex flex="1 1 auto" flexDirection="column">
         <HotelItemTitle className="hotel__title">
           <span itemProp="name">{formatHotelName(name)}</span>
         </HotelItemTitle>
-        <ReactStars count={starRating} size={24} color1={`#fcc82b`} />
+        <ReactStars count={starRating} size={24} color1="#fcc82b" />
         <span className="rating" itemProp="starRating" itemScope itemType="http://schema.org/Rating">
           <meta itemProp="ratingValue" content={starRating} />
-          {starRating} star rating
+          {starRating}
+          {' '}
+          star rating
         </span>
       </Flex>
+
       <Flex flex="1 1 auto" flexDirection="column" mr={3}>
-        <ul className="facilities-list">
-          {facilities.map((facility, index) => (
-            <li className="facilities-list__item"key={index}>
+        <FacilityList className="facilities-list">
+          {facilities.map(facility => (
+            <FacilityListItem className="facilities-list__item" key={facility}>
               <FontAwesomeIcon color="#399cda" icon="check" />
-              <span className="facility-name">{facility}</span>
-            </li>
+              <span className="facilities-list__name">{facility}</span>
+            </FacilityListItem>
           ))}
-        </ul>
+        </FacilityList>
       </Flex>
       <Button>View Hotel</Button>
     </Flex>

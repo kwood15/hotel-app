@@ -13,28 +13,30 @@ class Search extends Component {
     };
   }
 
-  handleKeyUp = event => {
-    if (event.key === 'Enter' && this.state.searchTerm !== '') {
-      const searchUrl = `search/multi?query=${this.state.searchTerm}&api_key=${this.apiKey}`;
+  handleKeyUp = (event) => {
+    const { searchTerm } = this.state;
+    if (event.key === 'Enter' && searchTerm !== '') {
+      const searchUrl = `search/multi?query=${searchTerm}&api_key=${this.apiKey}`;
       this.setState({
         searchUrl
       });
     }
   }
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       searchTerm: event.target.value
     });
-    console.log(this.state.searchTerm);
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
+    const { searchTerm } = this.state;
     event.preventDefault();
-    alert(`submitted: ${this.state.searchTerm}`);
+    alert(`submitted: ${searchTerm}`);
   }
 
   render() {
+    const { searchTerm } = this.state;
     return (
       <Flex as="form" onSubmit={this.handleSubmit} className="Search">
         <SearchInput
@@ -42,7 +44,7 @@ class Search extends Component {
           onChange={this.handleChange}
           type="search"
           placeholder="Find a hotel..."
-          value={this.state.searchTerm}
+          value={searchTerm}
         />
         <SearchButton type="submit">
           <FontAwesomeIcon icon="search" size="sm" color="white" />
