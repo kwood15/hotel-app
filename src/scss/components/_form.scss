@@ -46,6 +46,7 @@ $checkbox-size: 20px;
   color: #7b7b7b;
   font-size: 1rem;
   appearance: none;
+  cursor: pointer;
 
   &::-ms-expand {
     display: none;

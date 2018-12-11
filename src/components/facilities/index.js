@@ -11,7 +11,7 @@ const Facilities = ({
   handleFacilityChange,
   type
 }) => (
-  <Flex width={[1, 1/4]} mr={4} mt={4}>
+  <Flex as="section" className="facilities" width={[1, 1/4]} mr={4} mt={4}>
     <Form className="facilities">
       <fieldset className="facilities__fields">
         <legend className="facilities__title">Facilities</legend>
