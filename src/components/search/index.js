@@ -7,32 +7,18 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      apiKey: '12345',
-      searchTerm: '',
-      searchUrl: ''
+      searchTerm: ''
     };
   }
 
-  handleKeyUp = (event) => {
-    const { searchTerm } = this.state;
-    if (event.key === 'Enter' && searchTerm !== '') {
-      const searchUrl = `search/multi?query=${searchTerm}&api_key=${this.apiKey}`;
-      this.setState({
-        searchUrl
-      });
-    }
-  }
-
-  handleChange = (event) => {
+  setSearchTerm = (event) => {
     this.setState({
       searchTerm: event.target.value
     });
   }
 
   handleSubmit = (event) => {
-    const { searchTerm } = this.state;
     event.preventDefault();
-    alert(`submitted: ${searchTerm}`);
   }
 
   render() {
@@ -40,8 +26,7 @@ class Search extends Component {
     return (
       <Flex as="form" onSubmit={this.handleSubmit} className="Search">
         <SearchInput
-          onKeyUp={this.handleKeyUp}
-          onChange={this.handleChange}
+          onChange={this.setSearchTerm}
           type="search"
           placeholder="Find a hotel..."
           value={searchTerm}

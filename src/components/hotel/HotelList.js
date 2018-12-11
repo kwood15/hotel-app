@@ -6,7 +6,7 @@ import { Title } from '../shared/SharedStyles';
 import { HotelListSection } from './HotelStyles';
 
 class HotelList extends Component {
-  renderData = (hotels, filteredHotels) => {
+  renderData = (hotels, filteredHotels) => { //searchedHotels
     if (filteredHotels && filteredHotels.length) {
       return (
         <HotelListSection className="hotel-results">
@@ -17,6 +17,16 @@ class HotelList extends Component {
         </HotelListSection>
       );
     }
+    // if (searchedHotels && searchedHotels.length) {
+    //   return (
+    //     <HotelListSection className="hotel-results">
+    //       <Title>Hotels based on your search</Title>
+    //       {searchedHotels.map(searchedHotel => (
+    //         <HotelItem key={searchedHotel.name} {...searchedHotel} />
+    //       ))}
+    //     </HotelListSection>
+    //   );
+    // }
     return (
       <HotelListSection className="hotel-results">
         <Title>Hotels in Manchester</Title>
@@ -30,11 +40,12 @@ class HotelList extends Component {
   renderLoading = () => <p>Loading...</p>
 
   render() {
-    const { hotels, filteredHotels } = this.props;
+    const { hotels, filteredHotels, searchedHotels } = this.props;
 
     return (
       <Box width={1} my={4} className="hotel-results">
-        {hotels && hotels.length ? this.renderData(hotels, filteredHotels) : this.renderLoading()}
+        {hotels && hotels.length
+          ? this.renderData(hotels, filteredHotels, searchedHotels) : this.renderLoading()}
       </Box>
     );
   }

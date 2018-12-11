@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import { Flex } from '@rebass/grid';
 import Sort from '../sort';
 import Facilities from '../facilities';
@@ -12,6 +13,7 @@ class HotelContainer extends Component {
       filteredHotels: [],
       checkedItems: new Map(),
       starRatingValue: ''
+      // searchedHotels: []
     };
   }
 
@@ -57,6 +59,25 @@ class HotelContainer extends Component {
     });
   }
 
+  // searchHotels = () => {
+  //   const { hotels } = this.state;
+  //   const { searchTerm } = this.props;
+  //   const searchedHotels = hotels.filter((hotel) => {
+  //     return hotel.name.toLowerCase().search(searchTerm.toLowerCase()) !== -1;
+  //   });
+  //   this.setState({
+  //     searchedHotels
+  //   });
+  // }
+
+  filterHotels(facility) {
+    const { hotels } = this.state;
+    const filteredHotels = hotels.filter(hotel => hotel.facilities.indexOf(facility) > -1);
+    this.setState({
+      filteredHotels
+    });
+  }
+
   loadData() {
     fetch('/data/hotels.json')
       .then(response => response.json())
@@ -70,21 +91,15 @@ class HotelContainer extends Component {
     });
   }
 
-  filterHotels(facility) {
-    const { hotels } = this.state;
-    const filteredHotels = hotels.filter(hotel => hotel.facilities.indexOf(facility) > -1);
-    this.setState({
-      filteredHotels
-    });
-  }
-
   render() {
     const {
       hotels,
       filteredHotels,
       starRatingValue,
-      checkedItems
+      checkedItems,
+      searchedHotels
     } = this.state;
+
     return (
       <Flex flexDirection="column" alignItems="flex-end" width={1}>
         <Sort
@@ -101,6 +116,7 @@ class HotelContainer extends Component {
           <HotelList
             hotels={hotels}
             filteredHotels={filteredHotels}
+            searchedHotels={searchedHotels}
           />
         </Flex>
       </Flex>
@@ -109,3 +125,7 @@ class HotelContainer extends Component {
 }
 
 export default HotelContainer;
+
+// HotelContainer.propTypes = {
+//   searchTerm: PropTypes.string
+// };
