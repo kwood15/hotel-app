@@ -40,12 +40,13 @@ class HotelList extends Component {
   renderLoading = () => <p>Loading...</p>
 
   render() {
-    const { hotels, filteredHotels, searchedHotels } = this.props;
+    const { hotels, filteredHotels } = this.props; // searchedHotels
 
     return (
       <Box width={1} my={4} className="hotel-results">
         {hotels && hotels.length
-          ? this.renderData(hotels, filteredHotels, searchedHotels) : this.renderLoading()}
+          ? this.renderData(hotels, filteredHotels) : this.renderLoading()}
+        {/* searchedHotels */}
       </Box>
     );
   }
