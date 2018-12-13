@@ -28,7 +28,6 @@ describe('<HotelList />', () => {
   };
 
   const wrapper = shallow(<HotelList {...props} />);
-
   it('shows the correct className', () => {
     expect(wrapper.hasClass('hotel-results')).toBe(true);
   });
