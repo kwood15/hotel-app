@@ -6,40 +6,38 @@ import { FacilityGroup, FacilityLabel } from './FacilityStyles';
 import { Form } from '../shared/SharedStyles';
 
 const Facilities = ({
-  hotels,
   checkedItems,
   handleFacilityChange,
+  uniqueFacilities,
   type
 }) => (
   <Flex as="section" className="facilities" width={[1, 1/4]} mr={4} mt={4}>
-    <Form className="facilities">
-      <fieldset className="facilities__fields">
-        <legend className="facilities__title">Facilities</legend>
-        {hotels.map(hotel => (
-          <div key={hotel.name}>
-            {hotel.facilities.map(facility => (
-              <FacilityGroup className="facilities__group" key={facility}>
-                <div className="checkbox">
-                  <Checkbox
-                    id={facility}
-                    type={type}
-                    name={facility}
-                    checked={checkedItems.get(facility)}
-                    onChange={handleFacilityChange}
-                  />
-                  <FacilityLabel
-                    className="facilities__label checkbox__label u-text-transform-capitalize"
-                    htmlFor={facility}
-                    key={facility}
-                    aria-label={facility}
-                  >
-                    {facility}
-                  </FacilityLabel>
-                </div>
-              </FacilityGroup>
-            ))}
-          </div>
-        ))}
+    <Form className="facilities__form">
+      <fieldset className="facilities-form__fields">
+        <legend className="facilities-form__title">Facilities</legend>
+        <div className="facilities-form__fieldset">
+          {uniqueFacilities.map(facility => (
+            <FacilityGroup className="facilities-form__group" key={facility}>
+              <div className="facilities-form__checkbox checkbox">
+                <Checkbox
+                  id={facility}
+                  type={type}
+                  name={facility}
+                  checked={checkedItems.get(facility)}
+                  onChange={handleFacilityChange}
+                />
+                <FacilityLabel
+                  className="facilities-form__label checkbox__label u-text-transform-capitalize"
+                  htmlFor={facility}
+                  key={facility}
+                  aria-label={facility}
+                >
+                  {facility}
+                </FacilityLabel>
+              </div>
+            </FacilityGroup>
+          ))}
+        </div>
       </fieldset>
     </Form>
   </Flex>
@@ -48,10 +46,8 @@ const Facilities = ({
 export default Facilities;
 
 Facilities.propTypes = {
-  hotels: PropTypes.arrayOf(PropTypes.shape({
-    facilities: PropTypes.arrayOf(PropTypes.string).isRequired
-  })).isRequired,
   checkedItems: PropTypes.instanceOf(Map),
   type: PropTypes.string,
-  handleFacilityChange: PropTypes.func.isRequired
+  handleFacilityChange: PropTypes.func.isRequired,
+  uniqueFacilities: PropTypes.arrayOf(PropTypes.string)
 };

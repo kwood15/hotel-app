@@ -12,7 +12,8 @@ class HotelContainer extends Component {
       hotels: [],
       filteredHotels: [],
       checkedItems: new Map(),
-      starRatingValue: ''
+      starRatingValue: '',
+      uniqueFacilities: []
       // searchedHotels: []
     };
   }
@@ -89,6 +90,21 @@ class HotelContainer extends Component {
     this.setState({
       hotels: data
     });
+    this.filterDuplicateFacilities();
+  }
+
+  filterDuplicateFacilities() {
+    const { hotels } = this.state;
+    const uniqueFacilities = [];
+    hotels.forEach(hotel => hotel.facilities.forEach((facility) => {
+      if (!uniqueFacilities.includes(facility)) {
+        uniqueFacilities.push(facility);
+        this.setState({
+          uniqueFacilities
+        });
+      }
+      return false;
+    }));
   }
 
   render() {
@@ -97,7 +113,8 @@ class HotelContainer extends Component {
       filteredHotels,
       starRatingValue,
       checkedItems,
-      searchedHotels
+      uniqueFacilities
+      // searchedHotels
     } = this.state;
 
     return (
@@ -112,11 +129,12 @@ class HotelContainer extends Component {
             hotels={hotels}
             handleFacilityChange={this.handleFacilityChange}
             checkedItems={checkedItems}
+            uniqueFacilities={uniqueFacilities}
           />
           <HotelList
             hotels={hotels}
             filteredHotels={filteredHotels}
-            searchedHotels={searchedHotels}
+             // {searchedHotels={searchedHotels}
           />
         </Flex>
       </Flex>

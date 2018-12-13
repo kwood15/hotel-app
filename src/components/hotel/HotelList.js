@@ -6,7 +6,7 @@ import { Title } from '../shared/SharedStyles';
 import { HotelListSection } from './HotelStyles';
 
 class HotelList extends Component {
-  renderData = (hotels, filteredHotels) => { //searchedHotels
+  renderData = (hotels, filteredHotels) => { // searchedHotels
     if (filteredHotels && filteredHotels.length) {
       return (
         <HotelListSection className="hotel-results">

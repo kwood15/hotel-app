@@ -6,12 +6,13 @@ import { FacilityGroup } from '../FacilityStyles';
 describe('<Facilities />', () => {
   const props = {
     hotels: [{
-      name: 'testName',
+      key: 'hotelone',
+      name: 'hotelone',
       starRatingValue: '5',
-      key: 'testKey',
-      facilities: ['testA', 'testB'],
+      facilities: ['car park', 'pool'],
     }],
-    handleFacilityChange: () => 'test',
+    uniqueFacilities: ['car park', 'car park', 'gym'],
+    handleFacilityChange: () => 'mockChange',
     checkedItems: new Map()
   };
 
@@ -21,7 +22,7 @@ describe('<Facilities />', () => {
     expect(wrapper.hasClass('facilities')).toBe(true);
   });
 
-  it('renders 2 <FacilityGroup /> components', () => {
-    expect(wrapper.find(FacilityGroup)).toHaveLength(2);
+  it('renders 3 <FacilityGroup /> components', () => {
+    expect(wrapper.find(FacilityGroup)).toHaveLength(3);
   });
 });
