@@ -1,4 +1,4 @@
-# A hotel application
+# A hotel application [![Build Status](https://travis-ci.org/kwood15/hotel-app.svg?branch=master)](https://travis-ci.org/kwood15/hotel-app)
 ### Built with React
 
 ## Get Started
