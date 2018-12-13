@@ -32,10 +32,10 @@ describe('<HotelList />', () => {
     expect(wrapper.hasClass('hotel-results')).toBe(true);
   });
 
-  it('shows 3 hotels', () => {
+  it('shows 3 <HotelItem /> components', () => {
     expect(wrapper.find(HotelItem)).toHaveLength(3);
   });
-  it('shows the default order', () => {
+  it('shows 3 <HotelItem /> components in the default order', () => {
     expect(wrapper.find(HotelItem).at(0).prop('name')).toEqual('hotelone');
     expect(wrapper.find(HotelItem).at(1).prop('name')).toEqual('hoteltwo');
     expect(wrapper.find(HotelItem).at(2).prop('name')).toEqual('hotelthree');

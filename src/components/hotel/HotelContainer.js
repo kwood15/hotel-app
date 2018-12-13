@@ -22,15 +22,6 @@ class HotelContainer extends Component {
     this.loadData();
   }
 
-  handleFacilityChange = (event) => {
-    const facility = event.target.name;
-    const isChecked = event.target.checked;
-    this.setState(prevState => ({
-      checkedItems: prevState.checkedItems.set(facility, isChecked)
-    }));
-    this.filterHotels(facility);
-  }
-
   handleSortByChange = (event) => {
     if (event.target.value === 'High Rating') {
       this.sortByRatingDesc();
@@ -58,6 +49,15 @@ class HotelContainer extends Component {
     this.setState({
       hotels: hotels.slice(0).sort((a, b) => (b.starRating - a.starRating))
     });
+  }
+
+  handleFacilityChange = (event) => {
+    const facility = event.target.name;
+    const isChecked = event.target.checked;
+    this.setState(prevState => ({
+      checkedItems: prevState.checkedItems.set(facility, isChecked)
+    }));
+    this.filterHotels(facility);
   }
 
   filterHotels(facility) {

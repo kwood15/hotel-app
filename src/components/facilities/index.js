@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Flex } from '@rebass/grid';
+import { formatFacilityName } from '../../helpers';
 import Checkbox from '../form/Checkbox';
 import { FacilityGroup, FacilityLabel } from './FacilityStyles';
 import { Form } from '../shared/SharedStyles';
@@ -20,7 +21,7 @@ const Facilities = ({
             <FacilityGroup className="facilities-form__group" key={facility}>
               <div className="facilities-form__checkbox checkbox">
                 <Checkbox
-                  id={facility}
+                  id={formatFacilityName(facility)}
                   type={type}
                   name={facility}
                   checked={checkedItems.get(facility)}
@@ -28,8 +29,8 @@ const Facilities = ({
                 />
                 <FacilityLabel
                   className="facilities-form__label checkbox__label u-text-transform-capitalize"
-                  htmlFor={facility}
-                  key={facility}
+                  htmlFor={formatFacilityName(facility)}
+                  key={formatFacilityName(facility)}
                   aria-label={facility}
                 >
                   {facility}

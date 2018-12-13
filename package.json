@@ -7,8 +7,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint . src/ . --ext .js",
-    "test": "react-scripts test --coverage",
-    "test:ci": "npm run test",
+    "test": "react-scripts test",
+    "test:ci": "npm run test -- --coverage",
     "eject": "react-scripts eject"
   },
   "dependencies": {
