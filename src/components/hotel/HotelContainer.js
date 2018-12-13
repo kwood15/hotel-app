@@ -60,22 +60,24 @@ class HotelContainer extends Component {
     });
   }
 
-  // searchHotels = () => {
-  //   const { hotels } = this.state;
-  //   const { searchTerm } = this.props;
-  //   const searchedHotels = hotels.filter((hotel) => {
-  //     return hotel.name.toLowerCase().search(searchTerm.toLowerCase()) !== -1;
-  //   });
-  //   this.setState({
-  //     searchedHotels
-  //   });
-  // }
-
   filterHotels(facility) {
     const { hotels } = this.state;
     const filteredHotels = hotels.filter(hotel => hotel.facilities.indexOf(facility) > -1);
     this.setState({
       filteredHotels
+    });
+  }
+
+  filterDuplicateFacilities() {
+    const { hotels } = this.state;
+    const uniqueFacilities = [];
+    hotels.forEach(hotel => hotel.facilities.forEach((facility) => {
+      if (!uniqueFacilities.includes(facility)) {
+        uniqueFacilities.push(facility);
+      }
+    }));
+    this.setState({
+      uniqueFacilities
     });
   }
 
@@ -93,18 +95,16 @@ class HotelContainer extends Component {
     this.filterDuplicateFacilities();
   }
 
-  filterDuplicateFacilities() {
-    const { hotels } = this.state;
-    const uniqueFacilities = [];
-    hotels.forEach(hotel => hotel.facilities.forEach((facility) => {
-      if (!uniqueFacilities.includes(facility)) {
-        uniqueFacilities.push(facility);
-      }
-    }));
-    this.setState({
-      uniqueFacilities
-    });
-  }
+  // searchHotels = () => {
+  //   const { hotels } = this.state;
+  //   const { searchTerm } = this.props;
+  //   const searchedHotels = hotels.filter((hotel) => {
+  //     return hotel.name.toLowerCase().search(searchTerm.toLowerCase()) !== -1;
+  //   });
+  //   this.setState({
+  //     searchedHotels
+  //   });
+  // }
 
   render() {
     const {
