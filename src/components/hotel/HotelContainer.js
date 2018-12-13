@@ -99,12 +99,11 @@ class HotelContainer extends Component {
     hotels.forEach(hotel => hotel.facilities.forEach((facility) => {
       if (!uniqueFacilities.includes(facility)) {
         uniqueFacilities.push(facility);
-        this.setState({
-          uniqueFacilities
-        });
       }
-      return false;
     }));
+    this.setState({
+      uniqueFacilities
+    });
   }
 
   render() {

@@ -9,7 +9,7 @@ describe('<Facilities />', () => {
       key: 'hotelone',
       name: 'hotelone',
       starRatingValue: '5',
-      facilities: ['car park', 'pool'],
+      facilities: ['car park', 'pool']
     }],
     uniqueFacilities: ['car park', 'car park', 'gym'],
     handleFacilityChange: () => 'mockChange',
