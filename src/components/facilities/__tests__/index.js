@@ -53,7 +53,7 @@ describe('<Facilities />', () => {
     expect(wrapper.find(FacilityLabel).at(2).contains('gym')).toBe(true);
   });
 
-  it('shows the <Checkbox /> components with an {onChange} prop', () => {
+  it('renders a <Checkbox /> component with an {onChange} prop', () => {
     expect(wrapper.find(Checkbox).at(0).simulate('change', { target: { name: 'car park' } }));
     expect(wrapper.find(Checkbox).at(1).simulate('change', { target: { name: 'pool' } }));
     expect(wrapper.find(Checkbox).at(2).simulate('change', { target: { name: 'gym' } }));

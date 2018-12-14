@@ -36,7 +36,7 @@ describe('<HotelList />', () => {
   });
 
   it('takes a {filteredHotels} prop that initially contains no value ', () => {
-    expect(wrapper.prop('filteredHotels')).toEqual(undefined);
+    expect(wrapper.prop('filteredHotels')).toBe(undefined);
   });
 
   it('shows 3 <HotelItem /> components', () => {
