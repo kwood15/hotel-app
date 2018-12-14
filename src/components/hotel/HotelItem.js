@@ -10,7 +10,7 @@ import { HotelItemWrapper, HotelItemImage, HotelItemTitle } from './HotelStyles'
 import { FacilityList, FacilityListItem } from '../facilities/FacilityStyles';
 
 const HotelItem = ({ name, starRating, facilities }) => (
-  <HotelItemWrapper itemScope itemType="http://schema.org/Hotel">
+  <HotelItemWrapper itemScope itemType="http://schema.org/Hotel" className="hotel-item">
     <Flex flexWrap="wrap" alignItems="center" className="hotel">
       <HotelItemImage itemProp="photo" className="hotel__image hotel__image--placeholder">
         <p>Placeholder</p>
