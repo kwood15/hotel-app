@@ -9,7 +9,7 @@ describe('<Facilities />', () => {
 
   const props = {
     uniqueFacilities: ['car park', 'pool', 'gym'],
-    handleFacilityChange: () => 'mockChange',
+    handleFacilityChange: testFunc,
     checkedItems: new Map()
   };
 

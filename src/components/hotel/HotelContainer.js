@@ -117,7 +117,7 @@ class HotelContainer extends Component {
     } = this.state;
 
     return (
-      <Flex flexDirection="column" alignItems="flex-end" width={1}>
+      <Flex flexDirection="column" alignItems="flex-end" width={1} className="hotel-container">
         <Sort
           starRatingValue={starRatingValue}
           handleSubmit={this.handleSubmit}
